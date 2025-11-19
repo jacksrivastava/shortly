@@ -54,7 +54,23 @@ Response:
 }
 ```
 
-### 2. Get Stats
+### 2. List All Links
+**GET** `/api/links`
+
+Response:
+```json
+[
+  {
+    "short_code": "alias",
+    "long_url": "https://example.com",
+    "click_count": 5,
+    "created_at": "2023-10-27T10:00:00.000Z",
+    "last_clicked_at": "2023-10-27T12:00:00.000Z"
+  }
+]
+```
+
+### 3. Get Stats
 **GET** `/api/stats/:shortCode`
 
 Response:

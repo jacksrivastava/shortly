@@ -103,3 +103,16 @@ export const getStats = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
+export const getAllLinks = async (req: Request, res: Response) => {
+  try {
+    const links = await prisma.shortenedURL.findMany({
+      orderBy: { created_at: 'desc' },
+    });
+
+    res.json(links);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
