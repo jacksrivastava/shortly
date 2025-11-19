@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ShortenedURL {
+  short_code      String    @id @unique @db.VarChar(10)
+  long_url        String    @db.Text
+  click_count     Int       @default(0)
+  created_at      DateTime  @default(now())
+  last_clicked_at DateTime?
+
+  @@index([short_code])
+  @@map("shortened_urls")
+}
