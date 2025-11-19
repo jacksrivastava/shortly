@@ -1,3 +1,4 @@
+// Handle "Shorten" button click
 document.getElementById('shortenBtn').addEventListener('click', async () => {
     const longUrl = document.getElementById('longUrl').value;
     const customCode = document.getElementById('customCode').value;
@@ -5,6 +6,7 @@ document.getElementById('shortenBtn').addEventListener('click', async () => {
     const errorDiv = document.getElementById('error');
     const shortLink = document.getElementById('shortLink');
 
+    // Reset UI
     resultDiv.classList.add('hidden');
     errorDiv.classList.add('hidden');
 
@@ -15,6 +17,7 @@ document.getElementById('shortenBtn').addEventListener('click', async () => {
     }
 
     try {
+        // Send request to API
         const response = await fetch('/api/shorten', {
             method: 'POST',
             headers: {
@@ -32,6 +35,7 @@ document.getElementById('shortenBtn').addEventListener('click', async () => {
             throw new Error(data.error || 'Something went wrong');
         }
 
+        // Display result
         shortLink.href = data.short_url;
         shortLink.textContent = data.short_url;
         resultDiv.classList.remove('hidden');

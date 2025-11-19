@@ -8,12 +8,14 @@ export const shortenUrl = async (req: Request, res: Response) => {
   try {
     const { long_url, custom_code } = req.body;
 
+    // Validate input
     if (!long_url) {
       return res.status(400).json({ error: 'long_url is required' });
     }
 
     let short_code = custom_code;
 
+    // Check if custom code is provided and available
     if (short_code) {
       const existing = await prisma.shortenedURL.findUnique({
         where: { short_code },
@@ -22,10 +24,12 @@ export const shortenUrl = async (req: Request, res: Response) => {
         return res.status(409).json({ error: 'Custom code already taken' });
       }
     } else {
+      // Generate a random short code
       short_code = nanoid(6);
       // Ensure uniqueness (simple retry logic could be added here, but nanoid collision is rare)
     }
 
+    // Create new entry in database
     const newUrl = await prisma.shortenedURL.create({
       data: {
         long_url,
@@ -33,6 +37,7 @@ export const shortenUrl = async (req: Request, res: Response) => {
       },
     });
 
+    // Return the constructed short URL
     res.status(201).json({
       short_url: `${process.env.BASE_URL}/${newUrl.short_code}`,
     });
@@ -46,6 +51,7 @@ export const redirectUrl = async (req: Request, res: Response) => {
   try {
     const { shortCode } = req.params;
 
+    // Find the URL by short code
     const url = await prisma.shortenedURL.findUnique({
       where: { short_code: shortCode },
     });
@@ -63,6 +69,7 @@ export const redirectUrl = async (req: Request, res: Response) => {
       },
     }).catch((err: any) => console.error('Failed to update stats', err));
 
+    // Redirect to the original long URL
     res.redirect(url.long_url);
   } catch (error) {
     console.error(error);
@@ -74,6 +81,7 @@ export const getStats = async (req: Request, res: Response) => {
   try {
     const { shortCode } = req.params;
 
+    // Retrieve URL details
     const url = await prisma.shortenedURL.findUnique({
       where: { short_code: shortCode },
     });
@@ -82,6 +90,7 @@ export const getStats = async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'Short URL not found' });
     }
 
+    // Return stats
     res.json({
       short_code: url.short_code,
       long_url: url.long_url,
