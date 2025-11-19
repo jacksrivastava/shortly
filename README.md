@@ -12,6 +12,34 @@ A fast, reliable, and containerized URL shortener service built with Node.js, Ex
 - **Dockerized**: Easy deployment with Docker Compose.
 - **Web Interface**: Simple frontend to shorten URLs easily.
 
+## System Architecture
+
+```mermaid
+graph TD
+    Client[Client (Browser)]
+    subgraph Backend [Node.js Server]
+        Server[server.ts]
+        Routes[routes.ts]
+        Middleware[rateLimit.ts]
+        Controllers[controllers.ts]
+    end
+    subgraph Data [Data Layer]
+        Redis[(Redis Cache)]
+        DB[(PostgreSQL DB)]
+    end
+    subgraph Frontend [Static Files]
+        Public[public/ (HTML/CSS/JS)]
+    end
+
+    Client -->|HTTP Requests| Server
+    Server -->|Serves| Public
+    Server -->|Delegates| Routes
+    Routes -->|Uses| Middleware
+    Middleware <-->|Check/Update| Redis
+    Routes -->|Calls| Controllers
+    Controllers <-->|Query/Update| DB
+```
+
 ## Prerequisites
 
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed on your machine.
