@@ -16,19 +16,19 @@ A fast, reliable, and containerized URL shortener service built with Node.js, Ex
 
 ```mermaid
 graph TD
-    Client[Client (Browser)]
-    subgraph Backend [Node.js Server]
-        Server[server.ts]
-        Routes[routes.ts]
-        Middleware[rateLimit.ts]
-        Controllers[controllers.ts]
+    Client["Client (Browser)"]
+    subgraph Backend ["Node.js Server"]
+        Server["server.ts"]
+        Routes["routes.ts"]
+        Middleware["rateLimit.ts"]
+        Controllers["controllers.ts"]
     end
-    subgraph Data [Data Layer]
-        Redis[(Redis Cache)]
-        DB[(PostgreSQL DB)]
+    subgraph Data ["Data Layer"]
+        Redis[("Redis Cache")]
+        DB[("PostgreSQL DB")]
     end
-    subgraph Frontend [Static Files]
-        Public[public/ (HTML/CSS/JS)]
+    subgraph Frontend ["Static Files"]
+        Public["public/ (HTML/CSS/JS)"]
     end
 
     Client -->|HTTP Requests| Server
