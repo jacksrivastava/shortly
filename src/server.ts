@@ -1,3 +1,12 @@
+/**
+ * Server Entry Point
+ * 
+ * Purpose: Initializes the Express application, configures middleware (CORS, Helmet, JSON parsing),
+ * and starts the HTTP server.
+ * 
+ * Why: This file serves as the central hub for the application, wiring together all components
+ * and exposing the service to the network.
+ */
 import express from 'express';
 import dotenv from 'dotenv';
 import helmet from 'helmet';

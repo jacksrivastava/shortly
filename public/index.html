@@ -1,30 +1,47 @@
+<!--
+  Main Frontend Entry Point
+
+  Purpose: Provides the HTML structure for the URL shortener interface.
+  Includes the input form for long URLs and displays the generated short link.
+
+  Why: Serves as the user-facing page for the application, loaded by the browser.
+-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Short.ly - URL Shortener</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>Short.ly</h1>
-        <p>Enter a long URL to get a short link.</p>
-        
-        <div class="input-group">
-            <input type="url" id="longUrl" placeholder="Enter long URL (https://...)" required>
-            <input type="text" id="customCode" placeholder="Custom code (optional)">
-            <button id="shortenBtn">Shorten</button>
-        </div>
+      <h1>Short.ly</h1>
+      <p>Enter a long URL to get a short link.</p>
 
-        <div id="result" class="result hidden">
-            <p>Your short link:</p>
-            <a href="#" id="shortLink" target="_blank"></a>
-            <button id="copyBtn">Copy</button>
-        </div>
-        
-        <div id="error" class="error hidden"></div>
+      <div class="input-group">
+        <input
+          type="url"
+          id="longUrl"
+          placeholder="Enter long URL (https://...)"
+          required
+        />
+        <input
+          type="text"
+          id="customCode"
+          placeholder="Custom code (optional)"
+        />
+        <button id="shortenBtn">Shorten</button>
+      </div>
+
+      <div id="result" class="result hidden">
+        <p>Your short link:</p>
+        <a href="#" id="shortLink" target="_blank"></a>
+        <button id="copyBtn">Copy</button>
+      </div>
+
+      <div id="error" class="error hidden"></div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

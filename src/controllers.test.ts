@@ -1,3 +1,12 @@
+/**
+ * Controller Unit Tests
+ * 
+ * Purpose: Tests the functionality of the controller functions (shortenUrl, redirectUrl)
+ * using Jest and mocked Prisma/Express objects.
+ * 
+ * Why: Ensures the business logic works as expected and handles edge cases (like duplicate codes)
+ * correctly without requiring a running database.
+ */
 import { Request, Response } from 'express';
 import { shortenUrl, redirectUrl, getStats } from './controllers';
 import { PrismaClient } from '@prisma/client';

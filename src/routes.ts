@@ -1,3 +1,12 @@
+/**
+ * API Routes Configuration
+ * 
+ * Purpose: Defines the API endpoints and maps them to their respective controller functions.
+ * Includes middleware application (like rate limiting) for specific routes.
+ * 
+ * Why: Centralizes route definitions to make the API structure clear and maintainable.
+ * Separates routing logic from business logic (controllers).
+ */
 import { Router } from 'express';
 import { shortenUrl, redirectUrl, getStats, getAllLinks } from './controllers';
 import { rateLimiter } from './middleware/rateLimit';

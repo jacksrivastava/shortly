@@ -1,6 +1,11 @@
 /**
- * Controllers for URL shortening service
- * This file contains all the business logic for handling URL operations
+ * URL Shortener Controllers
+ * 
+ * Purpose: Contains the business logic for URL shortening, redirection, and analytics.
+ * Handles database interactions via Prisma and response formatting.
+ * 
+ * Why: Encapsulates the core functionality of the application, keeping it separate from
+ * routing and server configuration for better testability and organization.
  */
 
 import { Request, Response } from 'express';

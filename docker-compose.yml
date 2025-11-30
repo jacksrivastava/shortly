@@ -1,4 +1,11 @@
-version: '3.8'
+# Docker Compose Configuration
+#
+# Purpose: Orchestrates the multi-container application, defining services for the
+# Node.js app, PostgreSQL database, and Redis cache. Handles networking and volume mapping.
+#
+# Why: Simplifies local development and deployment by allowing the entire stack to be
+# started with a single command (`docker-compose up`).
+version: "3.8"
 
 services:
   app:

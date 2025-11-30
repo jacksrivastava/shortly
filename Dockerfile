@@ -1,3 +1,11 @@
+# Docker Build Instructions
+#
+# Purpose: Defines the steps to build a container image for the application, including
+# installing dependencies, building the TypeScript code, and setting up the runtime environment.
+#
+# Why: Enables consistent deployment across different environments (dev, staging, prod)
+# by packaging the application and its dependencies into a single portable unit.
+
 FROM node:18-alpine AS builder
 
 WORKDIR /app

@@ -1,3 +1,12 @@
+/**
+ * Rate Limiting Middleware
+ * 
+ * Purpose: Implements a sliding window rate limiter using Redis to prevent abuse.
+ * Limits the number of requests a single IP can make within a specified time window.
+ * 
+ * Why: Protects the service from denial-of-service attacks and excessive usage,
+ * ensuring fair resource allocation among users.
+ */
 import { Request, Response, NextFunction } from 'express';
 import Redis from 'ioredis';
 

@@ -1,3 +1,10 @@
+// Database Schema Definition
+//
+// Purpose: Defines the data models for the application (e.g., ShortenedURL) and the
+// database connection settings. Used by Prisma to generate the client and run migrations.
+//
+// Why: Provides a single source of truth for the database structure, ensuring consistency
+// between the application code and the database.
 generator client {
   provider = "prisma-client-js"
 }
